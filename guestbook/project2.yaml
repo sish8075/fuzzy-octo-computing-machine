@@ -1,0 +1,17 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: project2
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  description: This project should not exist
+  sourceRepos:
+  - '*'
+  destinations:
+  - namespace: default
+    server: https://kubernetes.default.svc
+  namespaceResourceWhitelist:
+  - group: 'apps'
+    kind: Deployment
