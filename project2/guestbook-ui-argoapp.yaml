@@ -1,0 +1,14 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: guestbook-project2
+  namespace: argocd
+spec:
+  project: project2
+  source:
+    repoURL: https://github.com/sish8075/fuzzy-octo-computing-machine.git
+    targetRevision: HEAD
+    path: project2
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: project2
